@@ -8,6 +8,7 @@
  package datastructure;
 
  import java.util.ArrayList;
+ import java.util.Arrays;
  import java.util.Iterator;
  import java.util.List;
 
@@ -25,8 +26,18 @@
 
      public static void main(String[] args) {
          // 同时启动两个线程对list进行操作！
-         new ThreadOne().start();
-         new ThreadTwo().start();
+//         new ThreadOne().start();
+//         new ThreadTwo().start();
+         //这会报不支持的操作异常，UnsupportedOperationException
+         //因为，Arrays.assList的底层实现是使用数组实现的，而数组不支持remove操作。
+         String string = "a b c d e";
+         List<String> stringList = Arrays.asList(string.split(" "));
+         Iterator<String> iterator = stringList.iterator();
+         while (iterator.hasNext()) {
+             if(iterator.next().equals("c")) {
+                 stringList.remove("c");
+             }
+         }
      }
 
      private static void printAll() {
