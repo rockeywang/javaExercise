@@ -8,6 +8,7 @@
  package designpattern.observer1;
 
  /**
+  * 观察者设计模式
   * @author wangchao4
   * @date 2018/11/2915:18
   */
